@@ -1,34 +1,35 @@
-import React, { Component} from "react";
+import React, { useState} from "react";
 import './app.css';
 
 //definicion estados
-class TrafficLight extends Component {
-  constructor(){
-    super();
-      this.state = {
-        estadoRoja: "apagada",
-        estadoAmarilla: "apagada",
-        estadoVerde: "apagada"
-      };
-  }
+// class TrafficLight extends Component {
+//   constructor(){
+//     super();
+//       this.state = {
+//         estadoRoja: "apagada",
+//         estadoAmarilla: "apagada",
+//         estadoVerde: "apagada"
+//       };
+//   }
+function App() {
+const [ color, setColor ] = useState('');
     // Semaforo
-    render(){
-      return(
-        <div>
-          <div id="barra"></div>
-          <div id="semaforo">
-            <div className= "luz roja" id= {this.state.estadoRoja} 
-            onClick={()=>this.setState({estadoRoja: "encendida", estadoAmarilla: "apagada", estadoVerde: "apagada"})}>
-            </div>
-            <div className= "luz amarilla" id= {this.state.estadoAmarilla} 
-            onClick={()=>this.setState({estadoRoja: "apagada", estadoAmarilla: "encendida", estadoVerde: "apagada"})}>
-            </div>
-            <div className= "luz verde" id= {this.state.estadoVerde} 
-            onClick={()=>this.setState({estadoRoja: "apagada", estadoAmarilla: "apagada", estadoVerde: "encendida"})}>
-            </div>
+    return (
+      <>
+      <div className = "supportTop"></div>
+      
+      <div className = "container">
+        <div className = "trafficControl">
+          <div onClick = { () => setColor('red')} className = {`redLight ${ color === "red" ? "shadow" : "" } `}>
           </div>
-        </div>);
-    }
+          <div onClick = { () => setColor('yellow')} className = {`yellowLight ${ color === "yellow" ? "shadow" : "" } `}>
+          </div>
+          <div onClick = { () => setColor('green')} className = {`greenLight ${ color === "green" ? "shadow" : "" } `}>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default TrafficLight;
+export default App;
